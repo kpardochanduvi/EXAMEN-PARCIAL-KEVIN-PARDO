@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            background:linear-gradient(
+                135deg,
+                #fff0f5,
+                #ffe4ec,
+                #ffd6e8
+            );
+            min-height:100vh;
+        }
+
+        header{
+            background:white;
+            padding:20px;
+            text-align:center;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1{
+            color:#ff4f8b;
+        }
+
+        .contenedor{
+            width:90%;
+            max-width:700px;
+            margin:40px auto;
+            background:white;
+            border-radius:20px;
+            padding:30px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contenedor h2{
+            text-align:center;
+            color:#ff4f8b;
+            margin-bottom:25px;
+        }
+
+        .grupo{
+            margin-bottom:18px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:6px;
+            font-weight:600;
+            color:#555;
+        }
+
+        input,
+        select,
+        textarea{
+            width:100%;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            font-size:15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus{
+            outline:none;
+            border:2px solid #ff4f8b;
+        }
+
+        textarea{
+            resize:none;
+        }
+
+        .btn{
+            width:100%;
+            padding:15px;
+            background:#ff4f8b;
+            color:white;
+            border:none;
+            border-radius:30px;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#e73f77;
+            transform:scale(1.02);
+        }
+
+        #resultado{
+            margin-top:25px;
+            padding:20px;
+            background:#ffe7f1;
+            border-radius:15px;
+            display:none;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos | Y & K</title>
+
+    <p align="center">
+
+    <img border="0" src="imagenes/Designer.png" width="218" height="217"></head><body><header></header></p>
+	<div class="contenedor">
+
+    <h2>Formulario de Pedido</h2>
+
+    <form id="pedidoForm">
+
+        <div class="grupo">
+            <label>Nombres y Apellidos</label>
+            <input type="text" id="nombre" required>
+        </div>
+
+        <div class="grupo">
+            <label>Ciudad</label>
+            <input type="text" id="ciudad" required>
+        </div>
+
+        <div class="grupo">
+            <label>Teléfono</label>
+            <input type="tel" id="telefono" required>
+        </div>
+
+        <div class="grupo">
+            <label>Producto</label>
+
+            <select id="producto">
+
+                <option>&#128144; Ramo Premium</option>
+                <option>&#127873; Caja Sorpresa</option>
+                <option>&#127851; Chocolates Gourmet</option>
+                <option>&#129528; Peluche Decorativo</option>
+
+            </select>
+        </div>
+
+        <div class="grupo">
+            <label>Cantidad</label>
+            <input type="number" id="cantidad" min="1" value="1">
+        </div>
+
+        <div class="grupo">
+            <label>Método de Pago</label>
+
+            <select id="pago">
+
+                <option>Yape</option>
+                <option>Plin</option>
+                <option>Transferencia Bancaria</option>
+                <option>Efectivo Contra Entrega</option>
+
+            </select>
+        </div>
+
+        <div class="grupo">
+            <label>Dirección de Entrega</label>
+            <input type="text" id="direccion" required>
+        </div>
+
+        <div class="grupo">
+            <label>Observaciones</label>
+            <textarea id="observacion" rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="btn">
+            Registrar Pedido
+        </button>
+
+    </form>
+
+    <div id="resultado"></div>
+
+</div>
+
+<script>
+
+document.getElementById("pedidoForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let nombre =
+        document.getElementById("nombre").value;
+
+    let ciudad =
+        document.getElementById("ciudad").value;
+
+    let telefono =
+        document.getElementById("telefono").value;
+
+    let producto =
+        document.getElementById("producto").value;
+
+    let cantidad =
+        document.getElementById("cantidad").value;
+
+    let pago =
+        document.getElementById("pago").value;
+
+    let direccion =
+        document.getElementById("direccion").value;
+
+    let observacion =
+        document.getElementById("observacion").value;
+
+    let resultado =
+        document.getElementById("resultado");
+
+    resultado.style.display = "block";
+
+    resultado.innerHTML = `
+        <h3>&#9989; Pedido Registrado</h3>
+        <br>
+        <p><strong>Cliente:</strong> ${nombre}</p>
+        <p><strong>Ciudad:</strong> ${ciudad}</p>
+        <p><strong>Teléfono:</strong> ${telefono}</p>
+        <p><strong>Producto:</strong> ${producto}</p>
+        <p><strong>Cantidad:</strong> ${cantidad}</p>
+        <p><strong>Método de Pago:</strong> ${pago}</p>
+        <p><strong>Dirección:</strong> ${direccion}</p>
+        <p><strong>Observaciones:</strong> ${observacion}</p>
+    `;
+});
+
+</script>
+
+</body>
+</html>
